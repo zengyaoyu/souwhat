@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>网易女人 - souWhat 简报</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6;-webkit-tap-highlight-color:transparent}
+.report-container{max-width:780px;margin:0 auto;padding:16px}
+.report-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:24px 20px;margin-bottom:16px;color:#fff}
+.report-title{font-size:22px;font-weight:600;margin-bottom:12px}
+.report-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;opacity:.9}
+.report-meta span{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:12px}
+.report-body{margin-bottom:16px}
+.report-footer{text-align:center;font-size:12px;color:#999;padding:12px 0}
+
+/* 可点击条目 — 通用 */
+.item{cursor:pointer;transition:box-shadow .2s}
+.item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.item-title{font-weight:600;color:#1d1d1f;line-height:1.5}
+.item-source{font-size:12px;color:#999;margin-top:4px}
+
+/* 展开详情面板 */
+.item-detail{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0}
+.item-detail.open{max-height:800px;padding:12px 0 0 0}
+.detail-content{font-size:14px;color:#444;line-height:1.7;word-break:break-word}
+.detail-link{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:8px;background:#f0f0f5;color:#667eea;text-decoration:none;font-size:13px;transition:background .15s}
+.detail-link:hover{background:#e0e0ff}
+.detail-link:active{background:#d0d0ff}
+
+/* Feed */
+.feed-item{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.feed-item .item-title{font-size:16px;margin-bottom:4px}
+.feed-item .item-summary{font-size:14px;color:#666;margin-top:2px}
+
+/* Card */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card-img{width:100%;height:100px;object-fit:cover;display:block;background:#eee}
+.card-img-fallback{width:100%;padding:10px 12px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;line-height:1.3;min-height:40px}
+.card-body{padding:10px 12px}
+.card-body .item-title{font-size:14px;margin-bottom:4px}
+
+/* Table */
+.data-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.data-table thead th{background:#f8f9fa;padding:10px 12px;text-align:left;font-size:13px;font-weight:600;color:#555;border-bottom:2px solid #eee;position:sticky;top:0}
+.data-table tbody td{padding:8px 12px;font-size:14px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.data-table tbody tr{cursor:pointer;transition:background .15s}
+.data-table tbody tr:hover{background:#f8f9ff}
+.table-num{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;background:#667eea;color:#fff;border-radius:50%;font-size:11px;font-weight:600;flex-shrink:0}
+.table-title{font-weight:500}
+.table-detail-row td{padding:0 12px}
+.table-detail-wrap{padding:8px 0}
+.expand-btn{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:6px;background:#f0f0f5;color:#667eea;text-decoration:none;font-size:12px;transition:background .15s;cursor:pointer}
+.expand-btn:hover{background:#e0e0ff}
+.item.expanded .expand-btn{display:none}
+</style>
+</head>
+<body>
+<div class="report-container">
+  <header class="report-header">
+    <h1 class="report-title">📋 网易女人 · 信息简报</h1>
+    
+    <div class="report-meta">
+      <span class="meta-source">📡 网易女人</span>
+      <span class="meta-time">🕐 2026年5月11日 11:58</span>
+      <span class="meta-count">📄 20 条</span>
+    </div>
+  </header>
+  <div class="report-body"><div class="card-grid">
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 首页
+      		首页</div>
+      <div class="card-body">
+        <div class="item-title">首页
+      		首页</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">首页
+      		首页</div>
+          <a class="detail-link" href="https://lady.163.com" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2024%2F0326%2Fa59bc882j00saxu4y00aic000s600e3c.jpg&thumbnail=750y370&quality=100&type=jpg" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">上海时装周首秀演绎当代海派风情</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">上海时装周首秀演绎当代海派风情</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/120050.html#p=IU74SCU900A70026NOS" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2024%2F0326%2F43e247b6j00saxscn001dc000s600e3c.jpg&thumbnail=750y370&quality=100&type=jpg" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">许佳琪暗夜玫瑰造型 复古韵味</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">许佳琪暗夜玫瑰造型 复古韵味</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/120049.html#p=IU72R0UD00A70026NOS" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 1范丞丞时尚大片 黑白风变贵公子</div>
+      <div class="card-body">
+        <div class="item-title">1范丞丞时尚大片 黑白风变贵公子</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">1范丞丞时尚大片 黑白风变贵公子</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/119189.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 735 
+                跟贴735</div>
+      <div class="card-body">
+        <div class="item-title">735 
+                跟贴735</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">735 
+                跟贴735</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/119189.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 2李宇春携手现代舞者出镜 演绎力合之量</div>
+      <div class="card-body">
+        <div class="item-title">2李宇春携手现代舞者出镜 演绎力合之量</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">2李宇春携手现代舞者出镜 演绎力合之量</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118902.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 590 
+                跟贴590</div>
+      <div class="card-body">
+        <div class="item-title">590 
+                跟贴590</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">590 
+                跟贴590</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118902.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 3陈立农穿红色西装拍大片 造型喜气洋洋</div>
+      <div class="card-body">
+        <div class="item-title">3陈立农穿红色西装拍大片 造型喜气洋洋</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">3陈立农穿红色西装拍大片 造型喜气洋洋</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118047.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 299 
+                跟贴299</div>
+      <div class="card-body">
+        <div class="item-title">299 
+                跟贴299</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">299 
+                跟贴299</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118047.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 4张小斐最新时尚大片 穿衬衫裙温婉妩媚</div>
+      <div class="card-body">
+        <div class="item-title">4张小斐最新时尚大片 穿衬衫裙温婉妩媚</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">4张小斐最新时尚大片 穿衬衫裙温婉妩媚</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/119141.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 283 
+                跟贴283</div>
+      <div class="card-body">
+        <div class="item-title">283 
+                跟贴283</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">283 
+                跟贴283</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/119141.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 5徐璐变身“千禧辣妹” 少女气质呼之欲出</div>
+      <div class="card-body">
+        <div class="item-title">5徐璐变身“千禧辣妹” 少女气质呼之欲出</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">5徐璐变身“千禧辣妹” 少女气质呼之欲出</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118908.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 240 
+                跟贴240</div>
+      <div class="card-body">
+        <div class="item-title">240 
+                跟贴240</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">240 
+                跟贴240</div>
+          <a class="detail-link" href="https://lady.163.com/photoview/00A70026/118908.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="http://cms-bucket.ws.126.net/2019/02/11/543b14c67ba943db8a44aa7bf8b479af.png?imageView&thumbnail=300y141" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">春节之后 希望家乡不再陌生</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">春节之后 希望家乡不再陌生</div>
+          <a class="detail-link" href="http://lady.163.com/19/0211/21/E7OUR20400267VA9.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="http://cms-bucket.nosdn.127.net/4691c562426d44c29b955d8ef9c0376820171215175547.png?imageView&thumbnail=300y141" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">专访郭柯：记录“慰安妇”的男导演</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">专访郭柯：记录“慰安妇”的男导演</div>
+          <a class="detail-link" href="http://lady.163.com/17/1215/17/D5NE0TD300267VA9.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="http://cms-bucket.ws.126.net/2022/0930/8df9331dp00rj0l4d0059c000s600e3c.png?imageView&thumbnail=300y141" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">49岁咏梅夺得影后 中年女演员不能没有名字</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">49岁咏梅夺得影后 中年女演员不能没有名字</div>
+          <a class="detail-link" href="http://lady.163.com/19/0218/09/E89MDR7C00267VA9.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 杨澜任教女性版“湖畔大学”2019届开学</div>
+      <div class="card-body">
+        <div class="item-title">杨澜任教女性版“湖畔大学”2019届开学</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">杨澜任教女性版“湖畔大学”2019届开学</div>
+          <a class="detail-link" href="http://lady.163.com/19/0225/14/E8SB2V4J00267V80.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 “仪贵人”韩丹彤清新白裙亮相品牌活动</div>
+      <div class="card-body">
+        <div class="item-title">“仪贵人”韩丹彤清新白裙亮相品牌活动</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">“仪贵人”韩丹彤清新白裙亮相品牌活动</div>
+          <a class="detail-link" href="http://lady.163.com/photoview/513O0026/114676.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 玛丽黛佳×女性传媒大奖：美妆和精神艺</div>
+      <div class="card-body">
+        <div class="item-title">玛丽黛佳×女性传媒大奖：美妆和精神艺</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">玛丽黛佳×女性传媒大奖：美妆和精神艺</div>
+          <a class="detail-link" href="http://lady.163.com/18/0102/18/D75SFLNV00267V80.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 光合自然Conature为2017网易“女性传媒</div>
+      <div class="card-body">
+        <div class="item-title">光合自然Conature为2017网易“女性传媒</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">光合自然Conature为2017网易“女性传媒</div>
+          <a class="detail-link" href="http://lady.163.com/17/1218/11/D5UDF0L300267V80.html" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div></div></div>
+  <footer class="report-footer">
+    <p>由 <strong>souWhat</strong> 自动生成 · 2026年5月11日 11:58</p>
+  </footer>
+</div>
+<script>
+function toggleDetail(el){
+  var detail=el.querySelector('.item-detail');
+  if(!detail)return;
+  var isOpen=detail.classList.contains('open');
+  detail.classList.toggle('open');
+  el.classList.toggle('expanded');
+}
+</script>
+</body>
+</html>
