@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>掘金 - souWhat 简报</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6;-webkit-tap-highlight-color:transparent}
+.report-container{max-width:780px;margin:0 auto;padding:16px}
+.report-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:16px;padding:24px 20px;margin-bottom:16px;color:#fff}
+.report-title{font-size:22px;font-weight:600;margin-bottom:12px}
+.report-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;opacity:.9}
+.report-meta span{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:12px}
+.report-body{margin-bottom:16px}
+.report-footer{text-align:center;font-size:12px;color:#999;padding:12px 0}
+
+/* 可点击条目 — 通用 */
+.item{cursor:pointer;transition:box-shadow .2s}
+.item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.item-title{font-weight:600;color:#1d1d1f;line-height:1.5}
+.item-source{font-size:12px;color:#999;margin-top:4px}
+
+/* 展开详情面板 */
+.item-detail{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0}
+.item-detail.open{max-height:800px;padding:12px 0 0 0}
+.detail-content{font-size:14px;color:#444;line-height:1.7;word-break:break-word}
+.detail-link{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:8px;background:#f0f0f5;color:#667eea;text-decoration:none;font-size:13px;transition:background .15s}
+.detail-link:hover{background:#e0e0ff}
+.detail-link:active{background:#d0d0ff}
+
+/* Feed */
+.feed-item{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.feed-item .item-title{font-size:16px;margin-bottom:4px}
+.feed-item .item-summary{font-size:14px;color:#666;margin-top:2px}
+
+/* Card */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card-img{width:100%;height:100px;object-fit:cover;display:block;background:#eee}
+.card-img-fallback{width:100%;padding:10px 12px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;line-height:1.3;min-height:40px}
+.card-body{padding:10px 12px}
+.card-body .item-title{font-size:14px;margin-bottom:4px}
+
+/* Table */
+.data-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.data-table thead th{background:#f8f9fa;padding:10px 12px;text-align:left;font-size:13px;font-weight:600;color:#555;border-bottom:2px solid #eee;position:sticky;top:0}
+.data-table tbody td{padding:8px 12px;font-size:14px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.data-table tbody tr{cursor:pointer;transition:background .15s}
+.data-table tbody tr:hover{background:#f8f9ff}
+.table-num{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;background:#667eea;color:#fff;border-radius:50%;font-size:11px;font-weight:600;flex-shrink:0}
+.table-title{font-weight:500}
+.table-detail-row td{padding:0 12px}
+.table-detail-wrap{padding:8px 0}
+.expand-btn{display:inline-block;margin-top:6px;padding:4px 12px;border-radius:6px;background:#f0f0f5;color:#667eea;text-decoration:none;font-size:12px;transition:background .15s;cursor:pointer}
+.expand-btn:hover{background:#e0e0ff}
+.item.expanded .expand-btn{display:none}
+</style>
+</head>
+<body>
+<div class="report-container">
+  <header class="report-header">
+    <h1 class="report-title">📋 掘金 · 信息简报</h1>
+    
+    <div class="report-meta">
+      <span class="meta-source">📡 掘金</span>
+      <span class="meta-time">🕐 2026年5月11日 11:58</span>
+      <span class="meta-count">📄 20 条</span>
+    </div>
+  </header>
+  <div class="report-body"><div class="card-grid">
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/2e62675c99154fb387c8250ff054e7a8~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg56iL5bqP5ZGY6bG855qu:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=KyFNANNmG3vTrvbIq7K4LHVJl2Q%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">全面封禁 Cursor！又一家大厂出手了</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">最近，有网友爆料称：快手的研发线发布通知，收紧了对第三方编程软件的使用权限。 不少同学发现，只要在自己办公电脑上点开 Cursor，就直接闪退，压根儿用不了。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7584110439933100078" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/c8e7c4e4a6704029af9f5a45b7ce558e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgQUnooovpvKDluJ0=:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=uhDa9MO38WO8MAOi6CKFrOFLuTw%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">豆包也开始抢程序员饭碗了，一个月只要9块9。。</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">Doubao-Seed-Code编程能力确实没有达到全球顶尖水平。 但它是国内首个支持视觉理解的编程模型，也是国内目前支持上下文长度最长（256K）的编程模型。 弥补了，其他国产编程模型的短板。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7572020278387261474" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/e25d42c36d6f4f6b8c15bcd231912a97~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5Zif5ZifTUQ=:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=LQVEy6tupmGF%2FSYJs6MQtxcAFkU%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">程序员副业 | 2026年4月复盘</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">我看后台有人催更，确实很久没写复盘了，年后一直在折腾，今天有时间，来复盘下4月份做的事情吧，最近真的是疯狂在通宵编程哈哈，今天我开发的软件发布了新版本，稍微可以清闲一下。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7634732507103969326" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/88d94546f03f4580b76d7aa6ea30a56d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zuo5aSc5a-75pm05aSp:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=imbDWHtv9Fgl0ZuU1AGnwP3GvXA%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">面试官问我：“AI 写代码比你快 100 倍，你的价值在哪？”</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">面试官是一个看着很资深的技术总监。他喝了口水，突然抛出了一个非常尖锐的问题： “你平时用 AI 写代码吗？现在 AI 敲代码的速度比你快 100 倍，错误率还比你低。在这种背景下，你觉得程序员的核心价</div>
+          <a class="detail-link" href="https://juejin.cn/post/7629213925721145379" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/3d24854d3b704abfb8d66235e9414871~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgRXJwYW5PbWVy:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=HnWe2D8kozMSj8GIVXR5fto%2FvnU%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">OpenClaw 为什么突然不火了？</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">OpenClaw等自主智能体因缺乏工程常识导致环境破坏、代码维护成本高昂、存在严重安全风险而被企业封杀，最终热度消退。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7633369483193630774" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 我写了一个 HTML 文件，把 JS 事件循环彻底搞懂了</div>
+      <div class="card-body">
+        <div class="item-title">我写了一个 HTML 文件，把 JS 事件循环彻底搞懂了</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">事情是这样的。 上周我在写一个页面，代码逻辑简单到不行，先发个请求拿数据，然后更新 DOM，完事儿。结果页面上数据死活不更新，console 里打印的顺序跟我写的顺序完全不一样。 我当时就愣住了。 那</div>
+          <a class="detail-link" href="https://juejin.cn/post/7638093084887908379" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/62006a8c1f4048879d0914e9c16ba913~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5LiJ5Y-q6JCM5paw:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=uzRx6rN8rXIfR2Rz6o6XF1nswBc%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">2026年3月面20个前端</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">3月，我面了二十个前端 3月，我参与了前端岗位的招聘工作。HR初筛了上百份简历后，递到我手中的还有30余份，前前后后面试了近二十场，最终才招到 2 位合适的伙伴入职。今天就和大家好好聊聊，也给正在求职</div>
+          <a class="detail-link" href="https://juejin.cn/post/7631753968202022955" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 35岁程序员的春天来了</div>
+      <div class="card-body">
+        <div class="item-title">35岁程序员的春天来了</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">35岁程序员的春天来了 1. 先说结论 我先把观点摆在前面：AI 编程不是 35 岁程序员的失业加速器，恰恰可能是他们的第二春。 尤其是那些真正做过几年 Java、踩过线上坑、带过复杂系统的人，价值会</div>
+          <a class="detail-link" href="https://juejin.cn/post/7614036943890907142" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 程序员最常用的10个AI提示词</div>
+      <div class="card-body">
+        <div class="item-title">程序员最常用的10个AI提示词</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">前言 2026年，AI编程已经像Git一样成为标配。 但很多人发现：同一个需求，别人问AI几分钟搞定，自己问AI却要反复改好几轮。 区别不在模型，而在提示词。 好的提示词不是“请写代码”，而是带约束、</div>
+          <a class="detail-link" href="https://juejin.cn/post/7633725015481729030" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/babbff98ff6b421ba03b8c9637da85ff~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgRXJwYW5PbWVy:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=9MSwQerYLgNLKaV%2FvPkA2Tq0FlU%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">那个把代码写得亲妈都不认的同事，最后被劝退了🤷‍♂️</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">大家好😁。 上上周，我们在例会上送别了团队里的一位技术大牛，阿K。 说实话，阿K 的技术底子很强。他能手写 Webpack 插件，熟读 ECMA 规范，对 Chrome 的渲染管线了如指掌。 但最终，</div>
+          <a class="detail-link" href="https://juejin.cn/post/7585897699603693594" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/85eac8f306c1499e9730f2aee04689b0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5qmZ5bqP5ZGY5bCP56uZ:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=UUyjIl5PNkSiWZafKZWIJak5fsE%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">你知道的，我们上午是不写代码的！</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">刚入职的实习生总会问：“哥，你们为啥上午都不写代码啊？一个个对着屏幕划水，到了下午就跟打了鸡血一样敲键盘？” 我笑着拍了拍他的肩膀：“这不是划水，是程序员的‘上午蓄力法则’——真正的程序员，上午从来不</div>
+          <a class="detail-link" href="https://juejin.cn/post/7602465642534404146" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/c02a3802c0fd46f8b8e2f1ae1d9fa11c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6ZWc6Iqx5rC05pyIbGlueWk=:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=y5QX7v9KUpAtw6P67c6%2FHG5Uhzk%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">一口气讲清楚 Agent、RAG、Skill、MCP 到底是什么？</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">这篇文章不搞概念堆砌，而是从一个后端工程师的视角，把 Agent、RAG、Skill、MCP 这四个高频词拆开、讲透。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7621878684524740671" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 为什么有的人偏爱 Mac</div>
+      <div class="card-body">
+        <div class="item-title">为什么有的人偏爱 Mac</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">为什么有的人偏爱 Mac 我之前大概用了十几年的 Windows，最近入职了一家新公司，公司强制给我发了 M4 版顶配的 Mac，一开始非常不习惯，到现在也有 3 个多月了。这里和大家分享下日常工作中</div>
+          <a class="detail-link" href="https://juejin.cn/post/7624462061241974847" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/b765fcb2e0714a3aad0472fa033ab0de~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgTWFjcm9aaGVuZw==:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=lwJH20a1W8BdLWY82SGbY4aI7XM%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">面试官：“你连Claude Code都没用过吗？”，我怼回去：“就没用过又怎么了？”</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">现在提起AI编程工具，Claude Code绝对是大家心目中的首选。甚至在面试当中，一句“你有没有用过Claude Code？”，已然成为衡量你技术敏感度的‘试金石’。！今天给大家分享下它的实战玩法！</div>
+          <a class="detail-link" href="https://juejin.cn/post/7633668887578263598" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/1a93679925034cbaac4f0c5d193a3f6e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6J2O5a2Q6I6x6I6x54ix5omT5oCq:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=yZcuA70F14TKf0aN9dkrI8OfCUc%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">别再裸用 Claude Code 了！32 个亲测Skills + 8 个 MCP，开发效率直接拉满！</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">别再裸用 Claude Code 了！32 个亲测技能 + 8 个 MCP 服务器，开发效率直接拉满！ 先晒一下我装完的效果（见下图），所有技能均实测可用。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7620060655607857178" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/cc59eb76b25c4be5a1b65f540300fb97~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgQ29kZVNoZWVw:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=79%2FYy4q4%2BboeOq8b2Dqh7l4Tbnw%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">王自如公开招聘01号员工，这要求有多离谱？</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">提到王自如，不知道大家是否了解。 说实话，回想起当年他还在 ZEALER 做数码测评那会，他的视频我看得还是非常多的，当年靠他的测评视频还种草了不少数码产品，不过说话间，那也是属于自己的一段青涩的时光</div>
+          <a class="detail-link" href="https://juejin.cn/post/7619900409898074112" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/44eac31e632540f7aff7def9349db5e7~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgQUnooovpvKDluJ0=:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=7QFR6g%2F8ExUj5D54DybVs4szYXs%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">阿里出手了！终于不怕OpenClaw烧token啦，直接算力自由～</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">阿里云推出全新CodingPlan服务，整合Qwen-3.5、Kimi-K2.5和GLM-4.7等国内顶尖AI编程模型，采用按请求次数计费模式，解决传统Token计费的高成本问题。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7610637031321698330" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <img class="card-img" src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/c9d7c026f29144ad8225d6c8982841c1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg56iL5bqP5ZGY6bG855qu:q75.awebp?rk3s=f64ab15b&x-expires=1779076121&x-signature=BsWVyj%2Bt7LMqeRkqv6OYJi3GYNA%3D" alt="" onerror="this.style.display='none'">
+      <div class="card-body">
+        <div class="item-title">小米送了我 16 亿 tokens，给我测爽了！手把手教你领取 | 附 Claude Code + MiMo-V2.5 实战测评</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">Claude Code + 小米 MiMo-V2.5-Pro 项目实战保姆级教程！手把手带你白领最多 16 亿 tokens，用最新 AI 编程工具开发 4 个不同类型的项目，覆盖环境配置等</div>
+          <a class="detail-link" href="https://juejin.cn/post/7634471632261971974" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 为什么越来越多的大厂抛弃MCP，转向CLI？</div>
+      <div class="card-body">
+        <div class="item-title">为什么越来越多的大厂抛弃MCP，转向CLI？</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">前言 最近在AI圈，有一个话题引发了巨大的争论——“MCP已死，CLI称王”。 从Perplexity CTO公开宣布放弃MCP，到Y Combinator CEO直言“MCP sucks”，再到飞书</div>
+          <a class="detail-link" href="https://juejin.cn/post/7630841596041478171" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item item" onclick="toggleDetail(this)">
+      <div class="card-img-fallback">📄 为什么现在 RAG 越少越少提及了</div>
+      <div class="card-body">
+        <div class="item-title">为什么现在 RAG 越少越少提及了</div>
+        <span class="expand-btn" onclick="event.stopPropagation();toggleDetail(this.parentElement.parentElement)">📖 查看全部</span>
+        <div class="item-detail">
+          <div class="detail-content">大家好，我是双越。wangEditor 作者，前百度 滴滴 资深前端工程师，慕课网金牌讲师，PMP，前端面试派 作者。本文分析一个现象：为什么现在 RAG 越少越少提及了，欢迎留言评论。</div>
+          <a class="detail-link" href="https://juejin.cn/post/7631495035477983242" target="_blank" rel="noopener">🔗 查看原文</a>
+        </div>
+      </div>
+    </div></div></div>
+  <footer class="report-footer">
+    <p>由 <strong>souWhat</strong> 自动生成 · 2026年5月11日 11:58</p>
+  </footer>
+</div>
+<script>
+function toggleDetail(el){
+  var detail=el.querySelector('.item-detail');
+  if(!detail)return;
+  var isOpen=detail.classList.contains('open');
+  detail.classList.toggle('open');
+  el.classList.toggle('expanded');
+}
+</script>
+</body>
+</html>
