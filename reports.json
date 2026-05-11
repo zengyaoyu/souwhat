@@ -1,0 +1,35 @@
+{
+  "reports": [
+    {
+      "file": "netease_lady_1778471903647.html",
+      "title": "netease 简报",
+      "category": "lifestyle",
+      "date": "2026/5/11"
+    },
+    {
+      "file": "netease_lady_1778467118489.html",
+      "title": "netease 简报",
+      "category": "lifestyle",
+      "date": "2026/5/11"
+    },
+    {
+      "file": "juejin_1778473329612.html",
+      "title": "juejin 简报",
+      "category": "tech",
+      "date": "2026/5/11"
+    },
+    {
+      "file": "juejin_1778471903642.html",
+      "title": "juejin 简报",
+      "category": "tech",
+      "date": "2026/5/11"
+    },
+    {
+      "file": "juejin_1778467118492.html",
+      "title": "juejin 简报",
+      "category": "tech",
+      "date": "2026/5/11"
+    }
+  ],
+  "updated": "2026-05-11T04:38:02.322Z"
+}
