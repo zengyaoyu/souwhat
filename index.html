@@ -2,50 +2,51 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#667eea">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.json">
 <title>souWhat 搜啥</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f5f5f7;overflow:hidden;height:100vh;width:100vw}
-#app{width:100%;height:100%;border:none;display:block}
-.loading{
-  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-  background:#f5f5f7;color:#1d1d1f;flex-direction:column;gap:16px;z-index:10
-}
-.spinner{width:32px;height:32px;border:3px solid #e0e0e0;border-top-color:#667eea;border-radius:50%;animation:spin 0.7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error{color:#ff4757;font-size:14px;display:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6;-webkit-tap-highlight-color:transparent}
+.hd{background:linear-gradient(135deg,#667eea,#764ba2);padding:20px 16px;color:#fff}
+.hd h1{font-size:22px;font-weight:600;margin-bottom:4px}
+.hd p{font-size:13px;opacity:.8}
+.list{padding:12px 16px}
+.card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card-title{font-size:15px;font-weight:500;margin-bottom:4px;color:#1d1d1f;text-decoration:none;display:block}
+.card-title:hover{color:#667eea}
+.card-meta{font-size:12px;color:#999;display:flex;gap:8px;flex-wrap:wrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px}
+.tag-tech{background:#e8f8e8;color:#2d8a4e}
+.tag-lifestyle{background:#fce4ec;color:#c62828}
+.empty{text-align:center;padding:60px 20px;color:#999}
+.empty-icon{font-size:40px;margin-bottom:8px}
 </style>
 </head>
 <body>
-<div class="loading" id="loading">
-  <div class="spinner"></div>
-  <div style="font-size:16px;color:#666">正在连接 souWhat...</div>
-  <div class="error" id="error">无法连接到服务，请确认电脑已开机并启动了 souWhat 服务</div>
-</div>
-<iframe id="app" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" style="display:none"></iframe>
-
+<div class="hd"><h1>📋 souWhat 搜啥</h1><p>信息简报 · 自动更新</p></div>
+<div class="list" id="list"><div class="empty"><div class="empty-icon">📡</div><div>正在加载...</div></div></div>
 <script>
-(async function() {
-  try {
-    const res = await fetch('config.json?_=' + Date.now());
-    const config = await res.json();
-    if (config.url) {
-      const iframe = document.getElementById('app');
-      iframe.src = config.url;
-      iframe.style.display = 'block';
-      document.getElementById('loading').style.display = 'none';
-    } else {
-      throw new Error('地址为空');
+(async function(){
+  try{
+    // 从reports.json获取报表列表
+    const r = await fetch('reports.json?_='+Date.now());
+    const data = await r.json();
+    const list = document.getElementById('list');
+    if(!data.reports || data.reports.length===0){
+      list.innerHTML='<div class="empty"><div class="empty-icon">📋</div><div>暂无报表</div><div style="font-size:13px;margin-top:4px">等待电脑端生成...</div></div>';
+      return;
     }
-  } catch (e) {
-    document.querySelector('.spinner').style.display = 'none';
-    document.getElementById('error').style.display = 'block';
+    list.innerHTML = data.reports.map(r => {
+      const cat = r.category || 'news';
+      const catClass = cat === 'tech' ? 'tag-tech' : 'tag-lifestyle';
+      const catName = cat === 'tech' ? '科技' : (cat === 'lifestyle' ? '生活' : cat);
+      return '<div class="card"><a class="card-title" href="reports/'+r.file+'" target="_blank">'+r.title+'</a><div class="card-meta"><span class="tag '+catClass+'">'+catName+'</span><span>🕐 '+r.date+'</span></div></div>';
+    }).join('');
+  }catch(e){
+    document.getElementById('list').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div>加载失败</div></div>';
   }
 })();
 </script>
